@@ -12,4 +12,7 @@ nlp.add_pipe('merge_entities')
 outfile = 'output.txt'
 
 events = extract_triples(outfile, nlp)
-map_relations(events, nlp)
+# print(events)
+# print()
+relns = map_relations(events, nlp)
+print(relns)
