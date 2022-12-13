@@ -53,8 +53,8 @@ def extract_triples(filename, nlp):
                 e[0] = e[0].replace(token.text, '').strip()
                 e[2] = token.text + ' ' + e[2]
 
-    ## merge Location and date as attributes
-    ## remove DATE triples
+    # ## merge Location and date as attributes
+    # ## remove DATE triples
     remove_cand = []
     for i in range(len(events)):
         doc = nlp(events[i][1])
@@ -83,4 +83,4 @@ def extract_triples(filename, nlp):
         if e not in remove_cand:
             new_events.append(e)
 
-    return new_events
+    return events

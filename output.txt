@@ -1,6 +1,6 @@
 The USA is country on the North American continent that consists of 50 states, a federal district (District of Columbia) and 14 territories.
-(  The USA  ;   is  ;   country on the North American continent  ) 
- (  the North American continent  ;   consists  ;   of 50 states  ) 
+(  USA  ;   is  ;   North America  ) 
+ (  USA  ;   consists  ;  50 states  ) 
 
 Puerto Rico is the biggest and most populous territory of USA.
 (  Puerto Rico  ;   is  ;   the biggest and most populous territory of USA  ) 
