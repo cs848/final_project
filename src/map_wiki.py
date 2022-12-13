@@ -36,7 +36,7 @@ def similar_to_wikidata(ent, nlp, wikidata):
 
 #from spacy_entity_linker import similar_to_wikidata
 def map_wiki(events, nlp):
-    wikidata_list_relation = get_wikidata("wikiprop.json")
+    wikidata_list_relation = get_wikidata("src/wikiprop.json")
     for e in events:
         if "*" not in e:
             e[2] = similar_to_wikidata(e[2], nlp, wikidata_list_relation)
