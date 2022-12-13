@@ -1,7 +1,5 @@
 from qwikidata.sparql  import return_sparql_query_results
 from difflib import SequenceMatcher
-import itertools
-from collections import defaultdict
 
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()

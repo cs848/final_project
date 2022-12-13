@@ -1,14 +1,11 @@
 import spacy
-import re
-import csv
-from qwikidata.sparql  import return_sparql_query_results
-from difflib import SequenceMatcher
-from extract_triples import extract_triples
-from map_relations import map_relations
-from map_wiki import map_wiki
 import pandas as pd
 import matplotlib.pyplot as plt
 import networkx as nx
+
+from src.extract_triples import extract_triples
+from src.map_relations import map_relations
+from src.map_wiki import map_wiki
 
 nlp = spacy.load("en_core_web_lg")
 nlp.add_pipe('merge_noun_chunks')
