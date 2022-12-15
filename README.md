@@ -20,11 +20,43 @@ These instructions will get you a copy of the project up and running on your loc
 2. Spacy (optional)
 
 ### Installing
+To extract triples from a text document named input.txt, follow the following steps
 
-#### Downloading source code
-Enter the following command in your console to clone the repository.
+
+First download IMoJIE and set up a Python3.6 environment by following the steps given in [link](https://github.com/dair-iitd/imojie/blob/master/README.md).
+Once you have got IMoJIE running in your local device, follow these steps to segment the sentences in the input document into multiple independent cluses. 
+
+1) After going in IMoJIE's directory, run the following command to download the pretrained models for clause extraction - 
+```bash
+$> zenodo_get 3779954
+```
+
+2) Then run the following command to get the segmented outputs from input.txt
+```bash
+$> python standalone.py --inp input.txt --out imojieOutput.txt
+```
+here imojieOutput.txt contains the corresponding OpenIE extractions. Now we use this imojieOutput file to construct the Knowledge graph.
+
+3) Downloading source code for our model (Text2Triple) by entering the following command in your console to clone the repository.
 ```bash
 $> git clone https://github.com/cs848/final_project.git
 ```
 
+4) Using a python-3.9 environment and install the dependencies using
+```bash
+$> pip install -r requirements.txt
+```
+
 #### Run the code
+To get relation triples using WikiData schema, enter the following command
+```bash
+$> python make_kg.py -i imojieOutput.txt
+```
+If you wish to provide your own schema for relation extraction, save the list of allowed terms for relation in a .txt file (here schema.txt) and run the following command to get the corresponding Knowledge Graph
+```bash
+$> python make_kg.py -i imojieOutput.txt -s schemaFile.txt
+```
+This produces a result.csv file with the extracted (SUBJECT, RELATION, OBJECT) triples and a result.png file with a graphical representation of the extracted KG
+
+#### Contact
+Incase of any issues, please send a mail to ```imohanty@uwaterloo.ca``` or ```l377liu@uwaterloo.ca```
