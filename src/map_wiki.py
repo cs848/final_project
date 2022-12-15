@@ -35,11 +35,17 @@ def similar_to_wikidata(ent, nlp, wikidata):
 
 
 #from spacy_entity_linker import similar_to_wikidata
-def map_wiki(events, nlp):
-    wikidata_list_relation = get_wikidata("src/wikiprop.json")
+def map_wiki(events, nlp, schema_file = None):
+    if schema_file == None:
+        relation_schema = get_wikidata("src/wikiprop.json")
+    else:
+        with open(schema_file, 'r') as file:
+            text = file.read()
+        relation_schema = text.split("\n")
+    
     for e in events:
         if "*" not in e:
-            e[2] = similar_to_wikidata(e[2], nlp, wikidata_list_relation)
+            e[2] = similar_to_wikidata(e[2], nlp, relation_schema)
 
     triples = []
     subj = []
