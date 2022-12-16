@@ -63,6 +63,8 @@ $> python make_kg.py -i imojieOutput.txt -s schemaFile.txt
 ```
 This produces a result.csv file with the extracted (SUBJECT, RELATION, OBJECT) triples and a result.png file with a graphical representation of the extracted KG
 
+The gold standard sentences from New York Times with their corresponding extracted relation triples are in the ```gold_standard.json``` file
+
 Note - While giving file parameters, make sure to input the file path relative to the main project's directory 
 
 #### Contact
