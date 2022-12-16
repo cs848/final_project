@@ -20,35 +20,40 @@ These instructions will get you a copy of the project up and running on your loc
 2. Spacy (optional)
 
 ### Installing
-To extract triples from a text document named input.txt, follow the following steps
 
-
-First download IMoJIE and set up a Python3.6 environment by following the steps given in [link](https://github.com/dair-iitd/imojie/blob/master/README.md).
-Once you have got IMoJIE running in your local device, follow these steps to segment the sentences in the input document into multiple independent cluses. 
-
-1) After going in IMoJIE's directory, run the following command to download the pretrained models for clause extraction - 
+#### Download the source code
+Enter the following command in your console to clone the repository.
 ```bash
+$> git clone https://github.com/cs848/final_project.git
+```
+Once you have the repo cloned, extracting knowledge graphs from natural language text will be done in two steps. 
+
+First, given a sentence, we will segment it into simple independent clauses to help us with entity extraction. To do this, we use [IMoJIE](https://github.com/dair-iitd/imojie). You can read more about it by clicking on the link. 
+
+Follow the following steps to download the pretrained models for sentence segmentation. You would need a Python3.6 environment to run IMoJIE.
+```bash
+$> cd final_project/iitd_imojie
+$> pip install -r requirements.txt
 $> zenodo_get 3779954
 ```
 
-2) Then run the following command to get the segmented outputs from input.txt
+Note: if the ```zenodo_get``` command takes too long to run, you can download it directly from [here](https://zenodo.org/api/files/31736bc8-9c8c-471b-b60b-99cf7c12d24a/imojie_models.tar.gz) and move it to iitd_imojie folder. Remember extract the contents in the folder by clicking on the .tar file. 
+
+Once you have got IMoJIE running in your local device, run the following command to get the segmented outputs from input.txt - 
+
 ```bash
 $> python standalone.py --inp input.txt --out imojieOutput.txt
 ```
 here imojieOutput.txt contains the corresponding OpenIE extractions. Now we use this imojieOutput file to construct the Knowledge graph.
 
-3) Downloading source code for our model (Text2Triple) by entering the following command in your console to clone the repository.
+Once this is done, decativate the Python3.6 environment and using a Python3.9 environment and install the dependencies for Text2Triple by running the following commands - 
 ```bash
-$> git clone https://github.com/cs848/final_project.git
-```
-
-4) Using a python-3.9 environment and install the dependencies using
-```bash
+$> cd ..
 $> pip install -r requirements.txt
 ```
 
 #### Run the code
-To get relation triples using WikiData schema, enter the following command
+Now, as we have Text2Triple up and running, to get relation triples using WikiData schema, enter the following command
 ```bash
 $> python make_kg.py -i imojieOutput.txt
 ```
@@ -57,6 +62,10 @@ If you wish to provide your own schema for relation extraction, save the list of
 $> python make_kg.py -i imojieOutput.txt -s schemaFile.txt
 ```
 This produces a result.csv file with the extracted (SUBJECT, RELATION, OBJECT) triples and a result.png file with a graphical representation of the extracted KG
+
+The gold standard sentences from New York Times with their corresponding extracted relation triples are in the ```gold_standard.json``` file
+
+Note - While giving file parameters, make sure to input the file path relative to the main project's directory 
 
 #### Contact
 Incase of any issues, please send a mail to ```imohanty@uwaterloo.ca``` or ```l377liu@uwaterloo.ca```
