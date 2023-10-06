@@ -10,6 +10,8 @@ A Knowledge Graph (KG) built from text documents may help people and computers t
 In this project, we attempt to enhance two aspects of the previously described system. First, a handcrafted pattern cannot cover every situation of a phrase. To solve this, we can use a dependency tree. We will take the text document and convert it into a dependency tree structure to extract relation triples instead of a pattern-based method. As a preprocessing step, we can first split the text into shorter phrases/clauses and then create a dependency tree out of it.
 
 Second, manually mapping an extracted relation to another relation schema is time-consuming. So, we map the extracted relation triples to an existing KG (e.g., DBpedia). If no mapping is discovered during this matching stage, we will utilize word embedding to determine the similarity between the extracted relation triple and the gold standard in the benchmark in order to choose the highest-rank relation.
+
+Please refer to the project report for further details.
  
  ## Getting Started
 
